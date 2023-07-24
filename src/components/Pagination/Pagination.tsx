@@ -25,7 +25,7 @@ export const Pagination = () => {
     arrayPages,
     firstIndexNumberArray,
     secondIndexNumberArray,
-  } = usePagination(posts, numberPagesArray);
+  } = usePagination(numberPagesArray);
 
   useEffect(() => {
     dispatch(setFirstSliceElement(firstIndexPostsArray));

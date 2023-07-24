@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { PostType } from '../redux/Posts/types';
 import { searchElementSliceArray } from '../common/until';
 
-export const usePagination = (array: PostType[], arrayPages: number[]) => {
+export const usePagination = (arrayPages: number[]) => {
   const [firstIndexPostsArray, setFirstIndexPostsArray] = useState(0);
   const [secondIndexPostsArray, setSecondIndexPostsArray] = useState(10);
   const [value, setValue] = useState(1);
@@ -17,17 +16,17 @@ export const usePagination = (array: PostType[], arrayPages: number[]) => {
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(search);
     const pageParam = urlSearchParams.get('page');
-    const pageInterval = Number(pageParam) * 10;
+    const pageSliceArrayIndex = Number(pageParam) * 10;
 
-    if (!arrayPages.includes(Number(pageParam)) || pageParam === null) {
+    if (pageParam === null) {
       setValue(1);
       navigate('/?page=1');
     }
 
-    setValue(Number(pageParam || 1));
-    setSecondIndexPostsArray(pageInterval);
-    setFirstIndexPostsArray(pageInterval - 10);
-  }, [arrayPages, navigate, search]);
+    setValue(Number(pageParam));
+    setSecondIndexPostsArray(pageSliceArrayIndex);
+    setFirstIndexPostsArray(pageSliceArrayIndex - 10);
+  }, [firstIndexNumberArray, navigate, search, secondIndexNumberArray]);
 
   const penultimateElementPagesSliceArray = searchElementSliceArray(
     3,
@@ -58,7 +57,7 @@ export const usePagination = (array: PostType[], arrayPages: number[]) => {
   );
 
   const handleClickNextPage = () => {
-    if (value !== array.length) {
+    if (value !== arrayPages.length) {
       setFirstIndexPostsArray((prev) => prev + 10);
       setSecondIndexPostsArray((prev) => prev + 10);
     }
@@ -85,9 +84,9 @@ export const usePagination = (array: PostType[], arrayPages: number[]) => {
   const handleClickCurrentPage = (page: number) => {
     setValue(page);
 
-    const pageInterval = page * 10;
-    setSecondIndexPostsArray(pageInterval);
-    setFirstIndexPostsArray(pageInterval - 10);
+    const pageSliceArrayIndex = page * 10;
+    setSecondIndexPostsArray(pageSliceArrayIndex);
+    setFirstIndexPostsArray(pageSliceArrayIndex - 10);
 
     if (page === arrayPages.at(-1) || page === arrayPages[0]) {
       return;

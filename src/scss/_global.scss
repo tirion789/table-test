@@ -14,12 +14,6 @@ body {
   }
 }
 
-.wrapper {
-  display: grid;
-  grid-template-rows: max-content 1fr max-content;
-  min-height: 100vh;
-}
-
 * {
   box-sizing: border-box;
   color: $basic-white;
