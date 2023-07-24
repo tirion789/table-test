@@ -29,9 +29,7 @@
   background-color: $grey;
   color: $blue-crayola;
   padding: 18px 50px 15px 26px;
-  @include desktop() {
-    width: 631px;
-  }
+  width: 631px;
   @include tablet() {
     width: 100%;
   }

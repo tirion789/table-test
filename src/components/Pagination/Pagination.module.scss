@@ -2,6 +2,7 @@
 @import "../../scss/mixins/reset.scss";
 @import "../../scss/mixins/text.scss";
 @import "../../scss/mixins/utility.scss";
+@import "../../scss/mixins/breakpoints.scss";
 
 .button {
   @include reset-button();
@@ -14,6 +15,10 @@
   align-items: center;
   display: flex;
   gap: 15px;
+
+  @include tablet() {
+    gap: 9px;
+  }
 }
 
 .container {
