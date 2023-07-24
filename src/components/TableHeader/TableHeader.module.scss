@@ -2,6 +2,7 @@
 @import "../../scss/mixins/reset.scss";
 @import "../../scss/mixins/text.scss";
 @import "../../scss/mixins/utility.scss";
+@import "../../scss/mixins/breakpoints.scss";
 
 .container {
   background-color: $dark-grey;
@@ -23,5 +24,12 @@
 .selected {
   .animation_icon {
     transform: rotate(180deg);
+  }
+}
+
+.item {
+  @include tablet() {
+    display: flex;
+    flex-direction: column;
   }
 }

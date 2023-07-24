@@ -34,7 +34,7 @@ export const TableHeader = ({
     <thead className={styles.container}>
       <tr className={styles.list}>
         {arrayTitles.map(({ title, isSort, type }) => (
-          <th key={title}>
+          <th className={styles.item} key={title}>
             <Button onClick={() => handleClickSortByTitle(type)} label={title}></Button>
             <span className={classNames(!isSort && styles.selected)}>
               <ArrowIcon className={styles.animation_icon} />

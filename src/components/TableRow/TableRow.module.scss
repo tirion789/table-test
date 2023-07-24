@@ -2,10 +2,16 @@
 @import "../../scss/mixins/reset.scss";
 @import "../../scss/mixins/text.scss";
 @import "../../scss/mixins/utility.scss";
+@import "../../scss/mixins/breakpoints.scss";
 
 .row {
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 4fr 4fr;
   min-height: 90px;
+
+  @include tablet() {
+    display: flex;
+    flex-direction: column;
+  }
 }
