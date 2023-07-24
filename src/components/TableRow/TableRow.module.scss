@@ -1,0 +1,11 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins/reset.scss";
+@import "../../scss/mixins/text.scss";
+@import "../../scss/mixins/utility.scss";
+
+.row {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 4fr 4fr;
+  min-height: 90px;
+}

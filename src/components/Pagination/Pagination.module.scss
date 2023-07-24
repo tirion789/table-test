@@ -1,0 +1,39 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins/reset.scss";
+@import "../../scss/mixins/text.scss";
+@import "../../scss/mixins/utility.scss";
+
+.button {
+  @include reset-button();
+  @include textMedium-24();
+  @include focus();
+  color: $dark-grey;
+}
+
+.list {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+}
+
+.item {
+  @include reset-button();
+  @include textBold-18();
+  @include focus();
+  font-style: italic;
+}
+
+.active_button {
+  color: $light-green;
+}
+
+.disabled {
+  color: rgba($dark-grey, 0.4);
+  pointer-events: none;
+}

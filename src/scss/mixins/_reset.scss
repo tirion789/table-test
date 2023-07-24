@@ -1,0 +1,22 @@
+@mixin list-style-none {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin reset-button {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  outline: none;
+  padding: 0;
+}
+
+@mixin reset-input {
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  padding: 0;
+}

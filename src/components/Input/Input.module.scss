@@ -1,0 +1,40 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins/reset.scss";
+@import "../../scss/mixins/text.scss";
+@import "../../scss/mixins/utility.scss";
+
+.container {
+  color: $blue-crayola;
+  height: max-content;
+  margin-bottom: 25px;
+  position: relative;
+  width: max-content;
+}
+
+.icon {
+  @include vertical-center();
+  display: flex;
+  right: 25px;
+}
+
+.input {
+  @include reset-input();
+  @include textRegular-14();
+  @include focus();
+  background-color: $grey;
+  color: $blue-crayola;
+  padding: 18px 50px 15px 26px;
+  width: 631px;
+
+  &:disabled {
+    background-color: rgba($grey, 0.2);
+  }
+
+  &::placeholder {
+    color: $blue-crayola;
+  }
+}
+
+.disabled {
+  pointer-events: none;
+}

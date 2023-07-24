@@ -1,0 +1,30 @@
+body {
+  background-color: $basic-white;
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  margin: 0 auto;
+  max-width: $desktop-width;
+  padding: 20px 77px;
+  text-size-adjust: none;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  color: $basic-white;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  width: 100%;
+}

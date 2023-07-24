@@ -1,0 +1,42 @@
+@import "../variables.scss";
+
+@mixin basic-text {
+  color: $grey;
+  font-family: $font-family-roboto;
+  font-style: normal;
+  line-height: normal;
+}
+
+@mixin textRegular-14 {
+  @include basic-text();
+  font-size: 14px;
+  font-weight: $font-weight-regular;
+}
+
+@mixin textBold-14 {
+  @include textRegular-14();
+  font-weight: $font-weight-semi-bold;
+}
+
+@mixin textSemiBold-14 {
+  @include textRegular-14();
+  font-weight: $font-weight-semi-bold;
+}
+
+@mixin textMedium-13 {
+  @include basic-text();
+  font-size: 13px;
+  font-weight: $font-weight-medium;
+}
+
+@mixin textMedium-24 {
+  @include basic-text();
+  font-size: 24px;
+  font-weight: $font-weight-medium;
+}
+
+@mixin textBold-18 {
+  @include basic-text();
+  font-size: 18px;
+  font-weight: $font-weight-bold;
+}

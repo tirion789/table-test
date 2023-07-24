@@ -1,0 +1,11 @@
+@import "../../scss/variables.scss";
+@import "../../scss/mixins/text.scss";
+
+.not_found {
+  @include textBold-18();
+  align-items: center;
+  color: $dark-grey;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
