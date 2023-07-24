@@ -21,9 +21,12 @@
   }
 
   @include tablet() {
-    justify-content: center;
     min-height: 90px;
-    text-align: center;
     width: 100%;
+
+    &:not(:last-child) {
+      justify-content: center;
+      text-align: center;
+    }
   }
 }
