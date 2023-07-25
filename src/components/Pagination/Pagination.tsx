@@ -21,7 +21,7 @@ export const Pagination = () => {
     handleClickPrevPage,
     startIndexPostsArraySlice,
     endIndexPostsArraysSlice,
-    value,
+    currentPage,
     arrayPages,
     startIndexNumberArraySlice,
     endIndexNumberArraySlice,
@@ -35,9 +35,9 @@ export const Pagination = () => {
   return (
     <div className={styles.container}>
       <Link
-        to={`/?page=${value - 1}`}
+        to={`/?page=${currentPage - 1}`}
         onClick={handleClickPrevPage}
-        className={classNames(styles.button, startIndexPostsArraySlice === 0 && styles.disabled)}
+        className={classNames(styles.button, currentPage === 1 && styles.disabled)}
       >
         Назад
       </Link>
@@ -47,7 +47,7 @@ export const Pagination = () => {
             <Link
               to={`/?page=${page}`}
               onClick={() => handleClickCurrentPage(page)}
-              className={classNames(styles.item, value === page && styles.active_button)}
+              className={classNames(styles.item, currentPage === page && styles.active_button)}
             >
               {page}
             </Link>
@@ -55,12 +55,9 @@ export const Pagination = () => {
         ))}
       </ul>
       <Link
-        to={`/?page=${value + 1}`}
+        to={`/?page=${currentPage + 1}`}
         onClick={handleClickNextPage}
-        className={classNames(
-          styles.button,
-          endIndexPostsArraysSlice === posts.length && styles.disabled
-        )}
+        className={classNames(styles.button, currentPage === arrayPages.length && styles.disabled)}
       >
         Вперёд
       </Link>

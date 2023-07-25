@@ -6,7 +6,7 @@ import { searchElementSliceArray } from '../common/until';
 export const usePagination = (arrayPages: number[]) => {
   const [startIndexPostsArraySlice, setStartIndexPostsArraySlice] = useState(0);
   const [endIndexPostsArraysSlice, setEndIndexPostsArray] = useState(10);
-  const [value, setValue] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [startIndexNumberArraySlice, setStartIndexNumberArraySlice] = useState(0);
   const [endIndexNumberArraySlice, setEndIndexNumberArraySlice] = useState(5);
 
@@ -19,14 +19,14 @@ export const usePagination = (arrayPages: number[]) => {
     const pageSliceArrayIndex = Number(pageParam) * 10;
 
     if (pageParam === null) {
-      setValue(1);
+      setCurrentPage(1);
       navigate('/?page=1');
     }
 
-    setValue(Number(pageParam));
+    setCurrentPage(Number(pageParam));
     setEndIndexPostsArray(pageSliceArrayIndex);
     setStartIndexPostsArraySlice(pageSliceArrayIndex - 10);
-  }, [startIndexNumberArraySlice, navigate, search, endIndexNumberArraySlice, value]);
+  }, [startIndexNumberArraySlice, navigate, search, endIndexNumberArraySlice]);
 
   const penultimateElementPagesSliceArray = searchElementSliceArray(
     3,
@@ -57,12 +57,15 @@ export const usePagination = (arrayPages: number[]) => {
   );
 
   const handleClickNextPage = () => {
-    if (value !== arrayPages.length) {
+    if (currentPage !== arrayPages.length) {
       setStartIndexPostsArraySlice((prev) => prev + 10);
       setEndIndexPostsArray((prev) => prev + 10);
     }
 
-    if (value === penultimateElementPagesSliceArray && value !== arrayPages.length - 1) {
+    if (
+      currentPage === penultimateElementPagesSliceArray &&
+      currentPage !== arrayPages.length - 1
+    ) {
       setStartIndexNumberArraySlice((prev) => prev + 1);
       setEndIndexNumberArraySlice((prev) => prev + 1);
     }
@@ -74,15 +77,15 @@ export const usePagination = (arrayPages: number[]) => {
       setEndIndexPostsArray((prev) => prev - 10);
     }
 
-    if (value === secondElementPagesSliceArray && value !== arrayPages[1]) {
+    if (currentPage === secondElementPagesSliceArray && currentPage !== arrayPages[1]) {
       setStartIndexNumberArraySlice((prev) => prev - 1);
       setEndIndexNumberArraySlice((prev) => prev - 1);
     }
-    setValue((prev) => prev - 1);
+    setCurrentPage((prev) => prev - 1);
   };
 
   const handleClickCurrentPage = (page: number) => {
-    setValue(page);
+    setCurrentPage(page);
 
     const pageSliceArrayIndex = page * 10;
     setEndIndexPostsArray(pageSliceArrayIndex);
@@ -107,12 +110,12 @@ export const usePagination = (arrayPages: number[]) => {
     handleClickPrevPage,
     handleClickCurrentPage,
     setEndIndexPostsArray,
-    setValue,
+    setCurrentPage,
     startIndexPostsArraySlice,
     startIndexNumberArraySlice,
     endIndexNumberArraySlice,
     endIndexPostsArraysSlice,
-    value,
+    currentPage,
     arrayPages,
   };
 };
