@@ -89,10 +89,12 @@ export const Table = () => {
         titleSort={titleSort}
         handleClickSortByTitle={handleClickSortByTitle}
       />
-      {filteredPosts.map(({ id, body, title }) => (
-        <TableRow key={id} id={id} body={body} title={title} />
-      ))}
-      {difference && createNumberedArray(difference).map((_, index) => <TableRow key={index} />)}
+      <tbody>
+        {filteredPosts.map(({ id, body, title }) => (
+          <TableRow key={id} id={id} body={body} title={title} />
+        ))}
+        {difference && createNumberedArray(difference).map((_, index) => <TableRow key={index} />)}
+      </tbody>
     </table>
   );
 };
