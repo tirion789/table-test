@@ -7,13 +7,12 @@ import { Input } from '../../components/Input';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { searchValue } from '../../redux/Posts/selectors';
 import { setSearchValue } from '../../redux/Posts/posts';
-import styles from './TablePage.module.scss';
 
 export const TablePage = () => {
   const dispatch = useAppDispatch();
   const value = useAppSelector(searchValue);
   return (
-    <main className={styles.wrapper}>
+    <main>
       <Input
         icon={<SearchIcon />}
         placeholder="Поиск"
