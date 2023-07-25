@@ -9,7 +9,7 @@ export const AppRouter = () => {
   return (
     <>
       <Routes>
-        <Route path={RoutesMap.Main} element={<TablePage />} />
+        <Route path={RoutesMap.MAIN} element={<TablePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

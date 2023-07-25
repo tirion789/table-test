@@ -7,23 +7,19 @@ const initialState: PostsSliceState = {
   posts: [],
   status: Status.LOADING,
   searchValue: '',
-  firstSliceElement: 0,
-  secondSliceElement: 10,
+  startSliceElement: 0,
+  endSliceElement: 10,
 };
 
 const PostsSlice = createSlice({
   name: 'Posts',
   initialState,
   reducers: {
-    setCurrentElement(state, action: PayloadAction<number>) {
-      state.firstSliceElement = action.payload - 10;
-      state.secondSliceElement = action.payload;
+    setStartSliceElement(state, action) {
+      state.startSliceElement = action.payload;
     },
-    setFirstSliceElement(state, action) {
-      state.firstSliceElement = action.payload;
-    },
-    setSecondSliceElement(state, action) {
-      state.secondSliceElement = action.payload;
+    setEndSliceElement(state, action) {
+      state.endSliceElement = action.payload;
     },
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
@@ -45,7 +41,6 @@ const PostsSlice = createSlice({
   },
 });
 
-export const { setFirstSliceElement, setSecondSliceElement, setCurrentElement, setSearchValue } =
-  PostsSlice.actions;
+export const { setStartSliceElement, setEndSliceElement, setSearchValue } = PostsSlice.actions;
 
 export default PostsSlice.reducer;

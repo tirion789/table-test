@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './Pagination.module.scss';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setFirstSliceElement, setSecondSliceElement } from '../../redux/Posts/posts';
+import { setStartSliceElement, setEndSliceElement } from '../../redux/Posts/posts';
 import { usePagination } from '../../hooks/usePagination';
 import { selectPosts } from '../../redux/Posts/selectors';
 
@@ -19,30 +19,30 @@ export const Pagination = () => {
     handleClickCurrentPage,
     handleClickNextPage,
     handleClickPrevPage,
-    firstIndexPostsArray,
-    secondIndexPostsArray,
+    startIndexPostsArraySlice,
+    endIndexPostsArraysSlice,
     value,
     arrayPages,
-    firstIndexNumberArray,
-    secondIndexNumberArray,
+    startIndexNumberArraySlice,
+    endIndexNumberArraySlice,
   } = usePagination(numberPagesArray);
 
   useEffect(() => {
-    dispatch(setFirstSliceElement(firstIndexPostsArray));
-    dispatch(setSecondSliceElement(secondIndexPostsArray));
-  }, [dispatch, firstIndexPostsArray, secondIndexPostsArray]);
+    dispatch(setStartSliceElement(startIndexPostsArraySlice));
+    dispatch(setEndSliceElement(endIndexPostsArraysSlice));
+  }, [dispatch, startIndexPostsArraySlice, endIndexPostsArraysSlice]);
 
   return (
     <div className={styles.container}>
       <Link
         to={`/?page=${value - 1}`}
         onClick={handleClickPrevPage}
-        className={classNames(styles.button, firstIndexPostsArray === 0 && styles.disabled)}
+        className={classNames(styles.button, startIndexPostsArraySlice === 0 && styles.disabled)}
       >
         Назад
       </Link>
       <ul className={styles.list}>
-        {arrayPages.slice(firstIndexNumberArray, secondIndexNumberArray).map((page) => (
+        {arrayPages.slice(startIndexNumberArraySlice, endIndexNumberArraySlice).map((page) => (
           <li key={page}>
             <Link
               to={`/?page=${page}`}
@@ -59,7 +59,7 @@ export const Pagination = () => {
         onClick={handleClickNextPage}
         className={classNames(
           styles.button,
-          secondIndexPostsArray === posts.length && styles.disabled
+          endIndexPostsArraysSlice === posts.length && styles.disabled
         )}
       >
         Вперёд

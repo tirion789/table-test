@@ -2,9 +2,9 @@ import { RootState } from '../store';
 
 export const selectPosts = (state: RootState) => state.postsSlice.posts;
 
-export const selectFirstElementSlice = (state: RootState) => state.postsSlice.firstSliceElement;
+export const selectStartSliceElement = (state: RootState) => state.postsSlice.startSliceElement;
 
-export const selectSecondElementSlice = (state: RootState) => state.postsSlice.secondSliceElement;
+export const selectEndSliceElement = (state: RootState) => state.postsSlice.endSliceElement;
 
 export const searchValue = (state: RootState) => state.postsSlice.searchValue;
 

@@ -14,7 +14,7 @@ export interface PostType {
 export interface PostsSliceState {
   posts: PostType[];
   status: Status;
-  firstSliceElement: number;
-  secondSliceElement: number;
+  startSliceElement: number;
+  endSliceElement: number;
   searchValue: string;
 }

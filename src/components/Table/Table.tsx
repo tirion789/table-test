@@ -5,9 +5,9 @@ import { TableRow } from '../TableRow';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   searchValue,
-  selectFirstElementSlice,
+  selectEndSliceElement,
   selectPosts,
-  selectSecondElementSlice,
+  selectStartSliceElement,
   status,
 } from '../../redux/Posts/selectors';
 import { fetchPosts } from '../../redux/Posts/asyncActions';
@@ -18,8 +18,8 @@ import styles from './Table.module.scss';
 export const Table = () => {
   const dispatch = useAppDispatch();
   const posts = useAppSelector(selectPosts);
-  const firstIndex = useAppSelector(selectFirstElementSlice);
-  const secondIndex = useAppSelector(selectSecondElementSlice);
+  const startIndex = useAppSelector(selectStartSliceElement);
+  const endIndex = useAppSelector(selectEndSliceElement);
   const value = useAppSelector(searchValue);
   const postsStatus = useAppSelector(status);
 
@@ -37,8 +37,8 @@ export const Table = () => {
           title.toLowerCase().includes(value.toLowerCase())
       )
 
-      .slice(firstIndex, secondIndex);
-  }, [postsList, firstIndex, secondIndex, value]);
+      .slice(startIndex, endIndex);
+  }, [postsList, startIndex, endIndex, value]);
 
   const difference = 10 - filteredPosts.length;
 
